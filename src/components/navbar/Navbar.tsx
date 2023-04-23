@@ -1,32 +1,50 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  IconButton,
-  Toolbar,
-  Typography,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import React from "react";
+import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
+import Link from "@mui/material/Link";
+import { useNavigate } from "react-router-dom";
+import { grey } from "@mui/material/colors";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const linkToSignUp = () => navigate("/signup");
+  const linkToSignIn = () => navigate("/signin");
+  const linkToHome = () => navigate("/");
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
+          <Typography
+            onClick={linkToHome}
+            variant="h5"
+            component="div"
+            sx={{ flexGrow: 1 }}
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Where To Travel
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Link
+            color={grey[50]}
+            component="button"
+            variant="body1"
+            onClick={linkToSignUp}
+          >
+            Sign Up
+          </Link>
+          <Link
+            sx={{ padding: "1rem" }}
+            color={grey[50]}
+            component="button"
+            variant="body1"
+            onClick={linkToSignIn}
+          >
+            Sign In
+          </Link>
+          <Button onClick={linkToHome}>
+            <Link color={grey[50]}>
+              <HomeIcon />
+            </Link>
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
