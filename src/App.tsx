@@ -6,8 +6,10 @@ import Signup from "./pages/Signup/Signup";
 import Signin from "./pages/Signin/Signin";
 import { Paper } from "@mui/material";
 import { Post } from "./pages/Post/Post";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 const App: React.FC = () => {
+  const queryClient = new QueryClient();
   return (
     <Paper
       style={{
@@ -18,14 +20,16 @@ const App: React.FC = () => {
       className="App"
       elevation={0}
     >
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/post" element={<Post />} />
-        <Route path="/*" element={<HomePage />} />
-      </Routes>
+      <QueryClientProvider client={queryClient}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/post" element={<Post />} />
+          <Route path="/*" element={<HomePage />} />
+        </Routes>
+      </QueryClientProvider>
     </Paper>
   );
 };

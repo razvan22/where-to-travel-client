@@ -1,12 +1,12 @@
 import { Card, CardMedia } from "@mui/material";
 import Box from "@mui/material/Box";
-import { DestinationDTO } from "../../models/location/DestinationDTO";
+import { DestinationResponse } from "../../models/location/DestinationResponse";
 import { ImageDTO } from "../../models/location/ImageDTO";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 
 export interface DestinationProps {
-  destination: DestinationDTO;
+  destination: DestinationResponse;
 }
 
 const Destination = ({ destination }: DestinationProps) => {

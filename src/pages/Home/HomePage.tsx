@@ -1,25 +1,24 @@
 import { useEffect, useState } from "react";
-import Destination from "../../components/destination/Destination";
 import "./HomePage.css";
-import { DestinationDTO } from "../../models/location/DestinationDTO";
 import axios from "axios";
+import { DestinationResponse } from "../../models/location/DestinationResponse";
+import Destination from "../../components/destination/Destination";
+import { getAllDestinations } from "../../hooks/data/destination";
 
 const HomePage: React.FC = () => {
-  const [destinations, setDestinations] = useState<DestinationDTO[]>([]);
+  const [destinations, setDestinations] = useState<DestinationResponse[]>([]);
 
   useEffect(() => {
-    const getAllDestinations = async () => {
-      const response = await axios.get<DestinationDTO[]>(
-        "http://localhost:8080/api/v1/destination/all"
-      );
+    const getData = async () => {
+      const response = await getAllDestinations();
       setDestinations(response.data);
     };
-    getAllDestinations();
+    getData();
   }, []);
 
   return (
     <section className="home">
-      {destinations.map((destination: DestinationDTO) => (
+      {destinations.map((destination: DestinationResponse) => (
         <Destination destination={destination} key={destination.id} />
       ))}
     </section>
