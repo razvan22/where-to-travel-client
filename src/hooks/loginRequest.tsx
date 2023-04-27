@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { UserCredentials } from "../models/user/UserCredentials";
+import { UserCredentials } from "../shared/types/user/UserCredentials";
 
 const loginRequest = ({
   email,

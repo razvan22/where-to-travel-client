@@ -1,6 +1,6 @@
 import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
-import { CreateUserDTO } from "../../models/user/CreateUserDTO";
+import { CreateUserDTO } from "../../shared/types/user/CreateUserDTO";
 import "./Signup.css";
 import axios, { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";

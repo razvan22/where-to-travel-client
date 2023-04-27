@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./HomePage.css";
 import axios from "axios";
-import { DestinationResponse } from "../../models/location/DestinationResponse";
+import { DestinationResponse } from "../../shared/types/location/DestinationResponse";
 import Destination from "../../components/destination/Destination";
 import { getAllDestinations } from "../../hooks/data/destination";
 

@@ -1,6 +1,6 @@
 import { Alert, Button, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { UserCredentials } from "../../models/user/UserCredentials";
+import { UserCredentials } from "../../shared/types/user/UserCredentials";
 import loginRequest from "../../hooks/loginRequest";
 import { useNavigate } from "react-router-dom";
 

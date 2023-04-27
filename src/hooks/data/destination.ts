@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { DestinationResponse } from "../../models/location/DestinationResponse";
+import { DestinationResponse } from "../../shared/types/location/DestinationResponse";
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
 export const getAllDestinations = async (): Promise<

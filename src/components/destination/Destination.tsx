@@ -1,7 +1,7 @@
 import { Card, CardMedia } from "@mui/material";
 import Box from "@mui/material/Box";
-import { DestinationResponse } from "../../models/location/DestinationResponse";
-import { ImageDTO } from "../../models/location/ImageDTO";
+import { DestinationResponse } from "../../shared/types/location/DestinationResponse";
+import { ImageDTO } from "../../shared/types/location/ImageDTO";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 
