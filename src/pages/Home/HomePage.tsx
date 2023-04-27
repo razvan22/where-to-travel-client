@@ -1,17 +1,25 @@
-import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getAllDestinations } from "../../hooks/data/destination";
 import Destination from "../../components/destination/Destination";
 import { DestinationResponse } from "../../shared/types/location/DestinationResponse";
 import "./HomePage.css";
-import { Skeleton } from "@mui/material";
 import LoadingLogo from "../../shared/loading-logo/LoadingLogo";
+import { Alert, AlertTitle } from "@mui/material";
+import { AxiosError, AxiosResponse } from "axios";
 
 const HomePage: React.FC = () => {
-  const { isLoading, data } = useQuery(
-    ["destinations-all"],
-    getAllDestinations
-  );
+  const { error, isLoading, data } = useQuery<
+    AxiosResponse<DestinationResponse[]>
+  >(["destinations-all"], getAllDestinations);
+
+  if (error) {
+    return (
+      <Alert severity="error" className="home">
+        <AlertTitle>Error</AlertTitle>
+        This is an error alert — <strong>check it out!</strong>
+      </Alert>
+    );
+  }
 
   return (
     <section className="home">
