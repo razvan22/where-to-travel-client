@@ -1,50 +1,45 @@
 import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
-import HomeIcon from "@mui/icons-material/Home";
 import Link from "@mui/material/Link";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { grey } from "@mui/material/colors";
+import "./Nav.css";
 
 const Navbar = () => {
-  const navigate = useNavigate();
-
-  const linkToSignUp = () => navigate("/signup");
-  const linkToSignIn = () => navigate("/signin");
-  const linkToHome = () => navigate("/");
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <Typography
-            onClick={linkToHome}
-            variant="h5"
-            component="div"
-            sx={{ flexGrow: 1 }}
-          >
+          <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
             Where To Travel
           </Typography>
-          <Link
-            color={grey[50]}
-            component="button"
-            variant="body1"
-            onClick={linkToSignUp}
-          >
-            Sign Up
-          </Link>
-          <Link
-            sx={{ padding: "1rem" }}
-            color={grey[50]}
-            component="button"
-            variant="body1"
-            onClick={linkToSignIn}
-          >
-            Sign In
-          </Link>
-          <Button onClick={linkToHome}>
-            <Link color={grey[50]}>
-              <HomeIcon />
+          <NavLink to="signup">
+            <Link color={grey[50]} component="button" variant="body1">
+              Sign Up
             </Link>
-          </Button>
+          </NavLink>
+          <NavLink to="signin">
+            <Link
+              sx={{ padding: "1rem" }}
+              color={grey[50]}
+              component="button"
+              variant="body1"
+            >
+              Sign In
+            </Link>
+          </NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            <Link
+              sx={{ padding: "1rem" }}
+              color={grey[50]}
+              component="button"
+              variant="body1"
+            >
+              Home
+            </Link>
+          </NavLink>
         </Toolbar>
       </AppBar>
     </Box>

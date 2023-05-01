@@ -5,7 +5,7 @@ import { DestinationResponse } from "../../shared/types/location/DestinationResp
 import "./HomePage.css";
 import LoadingLogo from "../../shared/loading-logo/LoadingLogo";
 import { Alert, AlertTitle } from "@mui/material";
-import { AxiosError, AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 
 const HomePage: React.FC = () => {
   const { error, isLoading, data } = useQuery<

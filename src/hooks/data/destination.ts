@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios from "axios";
 import { DestinationResponse } from "../../shared/types/location/DestinationResponse";
 import { baseUrl } from "../baseUrl";
 
