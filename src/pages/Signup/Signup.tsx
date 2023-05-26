@@ -81,7 +81,7 @@ const Signup: React.FC = () => {
     );
 
     if (response.status === 200) {
-      navigate("/signin");
+      navigate("/login");
     }
   };
 

@@ -4,8 +4,9 @@ import { UserCredentials } from "../../shared/types/user/UserCredentials";
 import loginRequest from "../../api/requests/loginRequest";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthProvider";
+import './Login.css'
 
-const Signin = () => {
+const Login = () => {
   const navigate = useNavigate();
   const { auth, setAuth } = useAuthContext();
 
@@ -70,4 +71,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Login;

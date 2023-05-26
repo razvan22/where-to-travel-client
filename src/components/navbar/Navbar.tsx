@@ -17,14 +17,14 @@ const Navbar = () => {
               Sign Up
             </Link>
           </NavLink>
-          <NavLink to="signin">
+          <NavLink to="login">
             <Link
               sx={{ padding: "1rem" }}
               color={grey[50]}
               component="button"
               variant="body1"
             >
-              Sign In
+              Login
             </Link>
           </NavLink>
           <NavLink
