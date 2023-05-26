@@ -1,7 +1,6 @@
-import axios from "axios";
 import { DestinationResponse } from "../../shared/types/location/DestinationResponse";
-import { baseUrl } from "../baseUrl";
+import axios from "../../api/axios";
 
 export const getAllDestinations = async () => {
-	return await axios.get<DestinationResponse[]>(`${baseUrl()}/destination/all`);
+  return await axios.get<DestinationResponse[]>(`/destination/all`);
 };

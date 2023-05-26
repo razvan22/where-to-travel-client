@@ -8,6 +8,7 @@ import useAppRoutes from "./hooks/routes/useAppRoutes";
 
 const App: React.FC = () => {
   const queryClient = new QueryClient();
+
   return (
     <QueryClientProvider client={queryClient}>
       <Navbar />

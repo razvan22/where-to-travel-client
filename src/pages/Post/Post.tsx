@@ -1,6 +1,6 @@
 import { Button, TextField } from "@mui/material";
 import React, { useEffect } from "react";
-import loginRequest from "../../hooks/loginRequest";
+import loginRequest from "../../api/requests/loginRequest";
 
 export const Post = () => {
   const savePost = (event: React.FormEvent<HTMLFormElement>) => {
@@ -8,6 +8,8 @@ export const Post = () => {
   };
 
   useEffect(() => {
+    console.log(savePost);
+
     const loginUser = async () => {
       await loginRequest({ email: "razvan@gmail.com", password: "password" });
     };

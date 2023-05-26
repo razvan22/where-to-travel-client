@@ -1,20 +1,19 @@
-import { Button, TextField } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
+import { Button, CircularProgress, TextField } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import { UserCreateRequest } from "../../shared/types/user/UserCreateRequest";
 import "./Signup.css";
 import axios, { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
+import baseUrl from "../../shared/baseUrl";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,23}$/;
 const NAME_REGEX = /^[a-zA-Z]{2,23}/;
 const PASSWORD_REGEX =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,25}$/;
-type NameType = "firstName" | "lastName";
 
 const Signup: React.FC = () => {
   const navigate = useNavigate();
-  const emailRef = useRef<string>();
-  const errRef = useRef();
+  const [loading, setLoading] = useState(false);
 
   const [email, setEmail] = useState<string>();
   const [validEmail, setValidEmail] = useState(true);
@@ -26,12 +25,10 @@ const Signup: React.FC = () => {
   const [validLastName, setValidLastName] = useState(true);
 
   const [password, setPassword] = useState<string>();
-  const [passwordConfirmation, setPasswordConfirmation] = useState<string>();
   const [validPassword, setValidPassword] = useState(true);
-  const [passwordsMatch, setPasswordsMatch] = useState(true);
 
-  const [errMsg, serErrMsg] = useState<string>();
-  const [success, serSuccess] = useState(false);
+  const [passwordConfirmation, setPasswordConfirmation] = useState<string>();
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
 
   const user: UserCreateRequest = {
     email: email,
@@ -54,7 +51,7 @@ const Signup: React.FC = () => {
       const lastNameValid = NAME_REGEX.test(lastName);
       setValidLastName(lastNameValid);
     }
-  }, [user]);
+  }, [email, firstName, lastName]);
 
   useEffect(() => {
     if (password) {
@@ -71,9 +68,10 @@ const Signup: React.FC = () => {
   }, [password, passwordConfirmation]);
 
   const signUp = async (event: React.FormEvent<HTMLFormElement>) => {
+    setLoading(true);
     event.preventDefault();
     const response: AxiosResponse = await axios.post<AxiosResponse>(
-      "http://localhost:8080/api/v1/user",
+      `${baseUrl}/user`,
       user,
       {
         headers: {
@@ -137,6 +135,7 @@ const Signup: React.FC = () => {
         type="password"
         variant="outlined"
       />
+      {loading && <CircularProgress sx={{ margin: "1rem" }} />}
       <Button type="submit" variant="contained">
         Sign Up
       </Button>

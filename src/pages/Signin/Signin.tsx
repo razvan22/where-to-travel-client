@@ -1,11 +1,14 @@
 import { Alert, Button, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { UserCredentials } from "../../shared/types/user/UserCredentials";
-import loginRequest from "../../hooks/loginRequest";
+import loginRequest from "../../api/requests/loginRequest";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../context/AuthProvider";
 
 const Signin = () => {
   const navigate = useNavigate();
+  const { auth, setAuth } = useAuthContext();
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [err, setError] = useState<boolean>(false);
@@ -22,8 +25,11 @@ const Signin = () => {
   const loginUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    console.log(auth, setAuth);
+
     try {
       const response = await loginRequest(credentials);
+
       if (response.status === 200) {
         navigate("/");
       }
